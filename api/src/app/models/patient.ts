@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const PatientSchema = new mongoose.Schema({
   firstName: { required: true, type: String },
@@ -6,7 +6,9 @@ const PatientSchema = new mongoose.Schema({
   email: { required: true, type: String, lowercase: true },
   birthdate: { required: true, type: Date },
   phone: String,
-  professional: { type: mongoose.Schema.Types.ObjectId, ref: "Professional" },
+  professional: { type: mongoose.Schema.Types.ObjectId, ref: 'Professional' },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 export interface PatientInterface {
@@ -14,8 +16,10 @@ export interface PatientInterface {
   lastName: string;
   email: string;
   birthdate: Date;
-  phone: string,
+  phone: string;
   professional: string;
-}; 
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-export default mongoose.model<any>("Patient", PatientSchema);
+export default mongoose.model<any>('Patient', PatientSchema);

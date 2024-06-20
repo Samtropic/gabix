@@ -28,7 +28,7 @@ Patients do not have the `createdAt` and `updatedAt` timestamps created by the A
     # Bonus: => create a js migration script (in ./migration-scripts) that adds these fields to the existing data and run on the databse
     NB: you can use mongodb for vscode to watch database colelctions and run the script
 
-    # Notes:
+    # Notes: Used playground to do migrations script but we should implement a real migration process that keep track of applied migrations.
 
 ### _Fullstack_
 
