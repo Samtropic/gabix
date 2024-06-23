@@ -1,13 +1,14 @@
-import { Router } from "express";
-import express from "express";
-import { PatientsService } from "@api/services/patients.service";
-import { ProfessionalsService } from "@api/services/professional.service";
+import { Router } from 'express';
+import express from 'express';
+import { PatientsService } from '@api/services/patients.service';
+import { ProfessionalsService } from '@api/services/professional.service';
 
 const router = Router();
 
-router.get("/patients", getPatientsByProfessional);
-router.get("/me", getMyProfessional);
-router.put("/me/settings/service/prl", updateMyProfessionalService);
+router.get('/patients', getPatientsByProfessional);
+router.get('/me', getMyProfessional);
+router.post('/patients', createPatientForProfessional);
+router.put('/me/settings/service/prl', updateMyProfessionalService);
 const patientsService = new PatientsService();
 const professionalsService = new ProfessionalsService();
 export default router;
@@ -24,6 +25,12 @@ function getMyProfessional(req: any, res: express.Response) {
   professionalsService.getMyProfessional(req.user._id, res);
 }
 
+// -----
+// POST
+// -----
+function createPatientForProfessional(req: any, res: express.Response) {
+  patientsService.createPatientForProfessional(req.user._id, req.body, res);
+}
 
 // -----
 // PATCH

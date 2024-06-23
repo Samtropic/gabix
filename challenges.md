@@ -11,7 +11,7 @@ But what people don't know is that you also are a web developper in your spare t
 Launch the Angular project and the API.
 To log into your [professional account](http://localhost:4200/login), you will need an username and a password. Check through the application to find it and become familiar with the architecture. Make sure to be connected to the database and explore the new data generated.
 
-    # Notes:
+    # Notes: Change linux script to cross platform ones, add a dockerless local development configuration, extentionless imports.
 
 ## 1. Timestamp
 
@@ -50,7 +50,7 @@ From the request above, create a new route to create a patient for my profession
 
     # for CI => create e2e and unit tests and run them before commit your changes
 
-    # Notes:
+    # Notes: birthdate is now optional in schema to pair with previous requirement as setting a default birthdate is not relevant.
 
 ## 3. Routing
 

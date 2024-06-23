@@ -1,33 +1,61 @@
-import tryCatchErrorAndSubscribe from "@api/tools/catchAsyncError";
-import { from } from "rxjs";
-import express from "express";
-import patient, { PatientInterface } from "@api/models/patient";
+import tryCatchErrorAndSubscribe from '@api/tools/catchAsyncError';
+import { from } from 'rxjs';
+import express from 'express';
+import patient, { PatientInterface } from '@api/models/patient';
 
 export class PatientsService {
+  createPatientForProfessional(
+    professional: string,
+    patientData: Partial<PatientInterface>,
+    res: express.Response
+  ) {
+    tryCatchErrorAndSubscribe<PatientInterface>(
+      from(
+        patient.create({
+          ...patientData,
+          birthdate: patientData.birthdate
+            ? new Date(patientData.birthdate)
+            : null,
+          professional,
+        })
+      ),
+      (patient: PatientInterface) => res.status(201).json(patient),
+      res,
+      'patient created'
+    );
+  }
   getPatientsByProfessional(professional: string, res: express.Response) {
     tryCatchErrorAndSubscribe<PatientInterface>(
       from(patient.find({ professional })),
       (patients: PatientInterface[]) => res.status(200).json(patients),
       res,
-      "patients find"
+      'patients find'
     );
   }
 
-  getPatientsProfessionalByPhoneIndex(phoneindex: string, res: express.Response) {
+  getPatientsProfessionalByPhoneIndex(
+    phoneindex: string,
+    res: express.Response
+  ) {
     tryCatchErrorAndSubscribe<PatientInterface>(
       from(patient.find()),
       (patients: PatientInterface[]) => {
         const found: string[] = [];
         patients.forEach((patient) => {
           if (patient.phone.startsWith(phoneindex)) {
-            if (!found.find(professional => professional == patient.professional)){
+            if (
+              !found.find(
+                (professional) => professional == patient.professional
+              )
+            ) {
               found.push(patient.professional);
             }
           }
-        })
-        res.status(200).json(found)},
+        });
+        res.status(200).json(found);
+      },
       res,
-      "patients find"
+      'patients find'
     );
   }
 }
