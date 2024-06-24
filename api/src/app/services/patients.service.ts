@@ -24,6 +24,7 @@ export class PatientsService {
       'patient created'
     );
   }
+
   getPatientsByProfessional(professional: string, res: express.Response) {
     tryCatchErrorAndSubscribe<PatientInterface>(
       from(patient.find({ professional })),
@@ -56,6 +57,19 @@ export class PatientsService {
       },
       res,
       'patients find'
+    );
+  }
+
+  getPatientByIdProfessional(
+    professional: string,
+    patientId: string,
+    res: express.Response
+  ) {
+    tryCatchErrorAndSubscribe<PatientInterface>(
+      from(patient.findOne({ professional, _id: patientId })),
+      (patient: PatientInterface) => res.status(200).json(patient),
+      res,
+      'patient find'
     );
   }
 }

@@ -7,6 +7,7 @@ const router = Router();
 
 router.get('/patients', getPatientsByProfessional);
 router.get('/me', getMyProfessional);
+router.get('/patients/:patientId', getPatientByIdByProfessional);
 router.post('/patients', createPatientForProfessional);
 router.put('/me/settings/service/prl', updateMyProfessionalService);
 const patientsService = new PatientsService();
@@ -19,6 +20,11 @@ export default router;
 
 function getPatientsByProfessional(req: any, res: express.Response) {
   patientsService.getPatientsByProfessional(req.user._id, res);
+}
+
+function getPatientByIdByProfessional(req: any, res: express.Response) {
+  const patientId = req.params.patientId;
+  patientsService.getPatientByIdProfessional(req.user._id, patientId, res);
 }
 
 function getMyProfessional(req: any, res: express.Response) {
