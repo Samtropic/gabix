@@ -16,6 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PatientCreationDialogComponent } from '../ui/dialog/patient-creation-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
+import { FrenchPaginatorIntl } from '../ui/shared/intl/french-paginator';
 @NgModule({
   declarations: [
     ProtectedComponent,
@@ -37,7 +42,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     PatientCreationDialogComponent,
     MatSnackBarModule,
+    MatPaginatorModule,
   ],
-  providers: [ProfessionalService, DatePipe],
+  providers: [
+    ProfessionalService,
+    DatePipe,
+    { provide: MatPaginatorIntl, useClass: FrenchPaginatorIntl },
+  ],
 })
 export class ProtectedModule {}

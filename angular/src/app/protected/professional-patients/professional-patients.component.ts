@@ -1,9 +1,12 @@
 import {
+  AfterContentInit,
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   Inject,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -18,6 +21,7 @@ import { CreatePatientService } from 'src/app/core/services/patients/create-pati
 import { PatientCreationDialogService } from 'src/app/core/services/patients/patient-creation-dialog.service';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-professional-patients',
@@ -29,12 +33,19 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
   isLoading = true;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  dataSource: any;
+  dataSource = new MatTableDataSource<any>([]); // Initialize empty data source
   displayedColumns: any;
 
   dialogOpenSubscription: Subscription;
   dialogCloseSubscription: Subscription;
   dialogDataSubscription: Subscription;
+
+  private paginator: MatPaginator;
+
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.dataSource.paginator = this.paginator;
+  }
 
   constructor(
     private Router: Router,

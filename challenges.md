@@ -74,7 +74,7 @@ Create a route to GET a specific patient by ID only if it belongs to my professi
 
 The result of the table should be paginated. I can choose between three different size of results: 25, 50, 100.
 
-    # Notes:
+    # Notes: Added french MatPaginatorIntl
 
 ### _API_
 
