@@ -1,0 +1,9 @@
+.idea
+.vscode
+
+*/node_modules
+*/dist
+compose/mongo-data/*
+compose/mongo-log/*
+
+.env
