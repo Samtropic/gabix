@@ -8,7 +8,8 @@
     "node": ">=18.12.0"
   },
   "scripts": {
-    "serve": "yarn run build && cross-env NODE_ENV=development-local concurrently npm:serveonly:*",
+    "serve": "yarn run build && cross-env NODE_ENV=development-docker concurrently npm:serveonly:*",
+    "serve-localhost": "yarn run build && cross-env NODE_ENV=development-local concurrently npm:serveonly:*",
     "serveonly:tsc": "concurrently npm:tsc:*",
     "tsc:alias": "tsc -w",
     "tsc:tsc": "tsc-alias -w",

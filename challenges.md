@@ -11,13 +11,15 @@ But what people don't know is that you also are a web developper in your spare t
 Launch the Angular project and the API.
 To log into your [professional account](http://localhost:4200/login), you will need an username and a password. Check through the application to find it and become familiar with the architecture. Make sure to be connected to the database and explore the new data generated.
 
-    # Notes: 
+    # Notes:
 
 ## 1. Timestamp
 
 ### _Angular_
 
 On your [patients professional page](http://localhost:4200/professional/patients), add a new column `Birthdate` to the table. The date should be formatted to be easily readable (eg: `Apr 3rd 23`).
+
+    # Notes: Format should match localization
 
 ### _API_
 
@@ -30,7 +32,7 @@ Patients do not have the `createdAt` and `updatedAt` timestamps created by the A
 
 ### _Fullstack_
 
-Add a new column `createdAt` to the table of patients  (human readable format).
+Add a new column `createdAt` to the table of patients (human readable format).
 
 ## 2. CRUD
 
@@ -101,7 +103,7 @@ I can search with and without accent, in uppercase or lowercase.
 
     # Notes:
 
-### _Fullstack - Front-end oriented
+### \_Fullstack - Front-end oriented
 
 Implement a beautiful interface showing the interaction and the results of the API
 
@@ -113,13 +115,15 @@ in this challenge, you have to make a review of an existing code and submit your
 the files to review are:
 
 ### _Angular_
-```/angular/src/app/protected/my-account/my-account.component.ts```  
-```/angular/src/app/core/services/professional.service.ts```  
+
+`/angular/src/app/protected/my-account/my-account.component.ts`  
+`/angular/src/app/core/services/professional.service.ts`
 
     # Notes:
 
 ### _API_
-```api/src/app/services/professional.service.ts```  
-```gabix/api/src/app/services/patients.service.ts```  
+
+`api/src/app/services/professional.service.ts`  
+`gabix/api/src/app/services/patients.service.ts`
 
     # Notes:

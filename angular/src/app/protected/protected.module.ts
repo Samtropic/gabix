@@ -4,7 +4,7 @@ import { ProtectedComponent } from './protected.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { ProfessionalPatientsComponent } from './professional-patients/professional-patients.component';
 import { ProfessionalService } from '../core/services/professional.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -27,6 +27,6 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatProgressSpinnerModule,
   ],
-  providers: [ProfessionalService],
+  providers: [ProfessionalService, DatePipe],
 })
 export class ProtectedModule {}

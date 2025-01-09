@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PublicModule } from 'src/app/public/public.module';
 
@@ -14,6 +14,11 @@ import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { DateFormatService } from './core/services/date-format.service';
+
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,7 +32,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProtectedModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+    DateFormatService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

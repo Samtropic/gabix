@@ -19,6 +19,11 @@
            <th mat-header-cell *matHeaderCellDef> Nom </th>
            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
          </ng-container>
+
+         <ng-container matColumnDef="birthdate">
+            <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+            <td mat-cell *matCellDef="let element"> {{element.birthdate | date: dateFormatService.getDateFormat() }} </td>
+          </ng-container>
        
          <ng-container matColumnDef="email">
            <th mat-header-cell *matHeaderCellDef> Email </th>

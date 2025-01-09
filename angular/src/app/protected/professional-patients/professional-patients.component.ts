@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { ProfessionalService } from 'src/app/core/services/professional.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
+import { DateFormatService } from 'src/app/core/services/date-format.service';
 
 @Component({
   selector: 'app-professional-patients',
@@ -20,9 +22,17 @@ export class ProfessionalPatientsComponent implements OnInit {
   constructor(
     private Router: Router,
     private professionalService: ProfessionalService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private datePipe: DatePipe,
+    public readonly dateFormatService: DateFormatService
   ) {
-    this.displayedColumns = ['firstname', 'lastname', 'email', 'phone'];
+    this.displayedColumns = [
+      'firstname',
+      'lastname',
+      'birthdate',
+      'email',
+      'phone',
+    ];
   }
 
   ngOnInit(): void {
