@@ -21,6 +21,7 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { FrenchPaginatorIntl } from '../ui/shared/intl/french-paginator';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     ProtectedComponent,
@@ -43,6 +44,7 @@ import { FrenchPaginatorIntl } from '../ui/shared/intl/french-paginator';
     PatientCreationDialogComponent,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [
     ProfessionalService,

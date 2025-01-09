@@ -23,6 +23,7 @@ import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { SearchCriteria } from 'src/app/core/types/request.types';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-professional-patients',
@@ -47,9 +48,16 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
     pageSize: 0,
   };
 
+  sorter: MatSort;
+
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
     this.paginator = mp;
     this.dataSource.paginator = this.paginator;
+  }
+
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sorter = ms;
+    this.dataSource.sort = this.sorter;
   }
 
   constructor(
@@ -64,8 +72,8 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar
   ) {
     this.displayedColumns = [
-      'firstname',
-      'lastname',
+      'firstName',
+      'lastName',
       'birthdate',
       'email',
       'phone',
@@ -106,6 +114,7 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
         if (patients?.length) {
           this.patients = patients;
           this.dataSource = new MatTableDataSource(this.patients);
+          this.dataSource.sort = this.sorter;
         }
         this.isLoading = false;
         this.cd.markForCheck;

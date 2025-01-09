@@ -90,7 +90,7 @@ Optimize the request fetching patient so as a pagination, I can pass parameters 
 
 Sort the result of the table, by clicking the header column.
 
-    # Notes:
+    # Notes: Add sort on page result, first is global to all result, subsequent ones are local to the page result.
 
 ## 6. Fetch my doctor
 
