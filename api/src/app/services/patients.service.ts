@@ -25,9 +25,19 @@ export class PatientsService {
     );
   }
 
-  getPatientsByProfessional(professional: string, res: express.Response) {
+  getPatientsByProfessional(
+    professional: string,
+    res: express.Response,
+    page?: number | null,
+    pageSize?: number | null
+  ) {
     tryCatchErrorAndSubscribe<PatientInterface>(
-      from(patient.find({ professional })),
+      from(
+        patient
+          .find({ professional })
+          .limit(pageSize)
+          .skip((page - 1) * pageSize)
+      ),
       (patients: PatientInterface[]) => res.status(200).json(patients),
       res,
       'patients find'

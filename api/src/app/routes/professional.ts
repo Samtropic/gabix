@@ -19,7 +19,9 @@ export default router;
 // -----
 
 function getPatientsByProfessional(req: any, res: express.Response) {
-  patientsService.getPatientsByProfessional(req.user._id, res);
+  const page = req.query.page ? parseInt(req.query.page) : null;
+  const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null;
+  patientsService.getPatientsByProfessional(req.user._id, res, page, pageSize);
 }
 
 function getPatientByIdByProfessional(req: any, res: express.Response) {
