@@ -1,0 +1,54 @@
+<div class="h-full bg-gray-200 p-8">
+    <div class="bg-white rounded-lg shadow-xl pb-8">
+        <div class="w-full h-[250px]">
+            <img src="../../../assets/profile-background.jpg" class="w-full h-full rounded-tl-lg rounded-tr-lg">
+        </div>
+        <div class="flex flex-col items-center -mt-20">
+            <img src="../../../assets/avatar.png" class="w-40 border-4 border-white rounded-full">
+            <div class="flex items-center space-x-2 mt-2">
+                <p class="text-2xl">{{patientData.firstName}} {{patientData.lastName}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+        <div class="w-full flex flex-col 2xl:w-1/3">
+            <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                <h4 class="text-xl text-gray-900 font-bold">Informations personnels</h4>
+                <ul class="mt-2 text-gray-700">
+                    <li class="flex border-y py-2">
+                        <span class="font-bold w-64">Nom complet:</span>
+                        <span class="text-gray-700">{{patientData.firstName}}
+                            {{patientData.lastName}}</span>
+                    </li>
+                    <li class="flex border-b py-2">
+                        <span class="font-bold w-64">Date de naissance:</span>
+                        <span class="text-gray-700">{{patientData.birthdate | date: dateFormatService.getDatetimeFormat()}} </span>
+                    </li>
+                    <li class="flex border-b py-2">
+                        <span class="font-bold w-64">Créé le:</span>
+                        <span class="text-gray-700">{{patientData.createdAt | date: dateFormatService.getDatetimeFormat(true)}}</span>
+                    </li>
+                    <li class="flex border-b py-2">
+                        <span class="font-bold w-64">Modifié le:</span>
+                        <span class="text-gray-700">{{patientData.updatedAt | date: dateFormatService.getDatetimeFormat(true)}}</span>
+                    </li>
+                    <li class="flex border-b py-2">
+                        <span class="font-bold w-64">Téléphone:</span>
+                        <span class="text-gray-700">{{patientData.phone}}</span>
+                    </li>
+                    <li class="flex border-b py-2">
+                        <span class="font-bold w-64">Email:</span>
+                        <span class="text-gray-700">{{patientData.email}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col w-full 2xl:w-2/3">
+            <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                <h4 class="text-xl text-gray-900 font-bold">Notes</h4>
+                <p class="mt-2 text-gray-700">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum fuga exercitationem praesentium fugit magni quas perferendis nemo. Temporibus cum quaerat adipisci, numquam assumenda eligendi reiciendis fugiat rem, magnam, ipsam suscipit!</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -58,7 +58,7 @@ From the request above, create a new route to create a patient for my profession
 
 When clicking on a patient from the table, I am redirected to the page of the patient. There, I can see all the patient information on a beautiful page [as my own](http://localhost:4200/professional/me).
 
-    # Notes:
+    # Notes: Patient Details are lazily loaded on route /patients/:id
 
 ### _API_
 

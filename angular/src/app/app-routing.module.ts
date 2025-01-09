@@ -15,6 +15,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./protected/protected.module').then((m) => m.ProtectedModule),
   },
+  {
+    path: 'patients/:id',
+    canMatch: [authGuard],
+    loadComponent: () =>
+      import('./component/patient-details/patient-details.component').then(
+        (m) => m.PatientDetailsComponent
+      ),
+  },
   { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

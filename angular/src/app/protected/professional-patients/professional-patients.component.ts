@@ -70,6 +70,12 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
     console.log('Patient:', patient);
   }
 
+  onPatientClick(patient: any) {
+    this.Router.navigate(['patients', patient._id], {
+      queryParams: { patientData: JSON.stringify(patient) },
+    });
+  }
+
   fetchPatients(): void {
     this.professionalService
       .getMyPatients()
