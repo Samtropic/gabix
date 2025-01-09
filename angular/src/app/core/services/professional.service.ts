@@ -1,7 +1,13 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { PatientDto, ProfessionalConfirmatuionDto, ProfessionalDto, ProfessionalServicesPrlDto } from '../dtos';
+import {
+  PatientDto,
+  ProfessionalConfirmatuionDto,
+  ProfessionalDto,
+  ProfessionalServicesPrlDto,
+} from '../dtos';
+import { QueryParams } from '../types/request.types';
 
 @Injectable()
 export class ProfessionalService implements OnDestroy {
@@ -23,13 +29,15 @@ export class ProfessionalService implements OnDestroy {
           if (professional) {
             this.me$.next(professional);
           }
-        }),
+        })
       )
       .subscribe();
   }
 
-  getMyPatients() {
-    return this.http.get<PatientDto[]>('http://localhost:4000/pro/patients');
+  getMyPatients(params?: QueryParams) {
+    return this.http.get<PatientDto[]>('http://localhost:4000/pro/patients', {
+      params,
+    });
   }
 
   updatePrlService(body: ProfessionalServicesPrlDto): any {

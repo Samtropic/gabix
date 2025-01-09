@@ -26,3 +26,18 @@ export interface RequestOptions {
       }
     | boolean;
 }
+
+export interface QueryParams {
+  // Key-value pair representing any query parameter
+  // Example: { page: 10, pageSize: 25}
+  [param: string]:
+    | string
+    | number
+    | boolean
+    | ReadonlyArray<string | number | boolean>;
+}
+
+export interface SearchCriteria extends QueryParams {
+  page: number;
+  pageSize: number;
+}

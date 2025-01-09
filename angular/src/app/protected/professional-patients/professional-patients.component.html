@@ -48,9 +48,12 @@
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="printPatient(row); onPatientClick(row)"></tr>
        </table>
-       <mat-paginator [pageSizeOptions]="[25, 50, 100]"
+       <mat-paginator 
+         #paginator
+         [pageSizeOptions]="[25, 50, 100]"
          showFirstLastButtons
-         aria-label="Selection de page des patients">
+         aria-label="Selection de page des patients"
+         (page)="onPageChange($event)">
       </mat-paginator>
        
    </div>

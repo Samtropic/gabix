@@ -21,7 +21,8 @@ import { CreatePatientService } from 'src/app/core/services/patients/create-pati
 import { PatientCreationDialogService } from 'src/app/core/services/patients/patient-creation-dialog.service';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { SearchCriteria } from 'src/app/core/types/request.types';
 
 @Component({
   selector: 'app-professional-patients',
@@ -41,6 +42,10 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
   dialogDataSubscription: Subscription;
 
   private paginator: MatPaginator;
+  searchCriteria: SearchCriteria = {
+    page: 1,
+    pageSize: 0,
+  };
 
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
     this.paginator = mp;
@@ -87,9 +92,15 @@ export class ProfessionalPatientsComponent implements OnInit, OnDestroy {
     });
   }
 
+  onPageChange(event: PageEvent) {
+    this.searchCriteria.page = event.pageIndex + 1; // Page index starts from 0
+    this.searchCriteria.pageSize = event.pageSize;
+    this.fetchPatients();
+  }
+
   fetchPatients(): void {
     this.professionalService
-      .getMyPatients()
+      .getMyPatients(this.searchCriteria)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((patients: any) => {
         if (patients?.length) {
