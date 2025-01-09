@@ -1,0 +1,53 @@
+{
+    "ts-node": {
+      "require": ["tsconfig-paths/register"]
+    },
+    "compilerOptions": {
+      "skipLibCheck": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./dist",
+      "allowJs": false,
+      "target": "ES2020",
+      "sourceMap": true,
+      "module": "es2022",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "baseUrl": "./",
+      "paths": {
+        "@api/*": [
+          "src/app/*"
+        ],
+      },
+  
+      "resolveJsonModule": true,                         /* Enable JSON import (like pacakage.JSON for version)   */
+      "noImplicitAny": false,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+      "strictNullChecks": false,                         /* When type checking, take into account 'null' and 'undefined'. */
+      "strictFunctionTypes": false,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
+      "strictBindCallApply": false,                      /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */
+      "strictPropertyInitialization": false,             /* Check for class properties that are declared but not set in the constructor. */
+      "noImplicitThis": false,                           /* Enable error reporting when 'this' is given the type 'any'. */
+      "useUnknownInCatchVariables": false,               /* Default catch clause variables as 'unknown' instead of 'any'. */
+      "alwaysStrict": false,                             /* Ensure 'use strict' is always emitted. */
+      "noUnusedLocals": false,                           /* Enable error reporting when local variables aren't read. */
+      "noUnusedParameters": false,                       /* Raise an error when a function parameter isn't read. */
+      "exactOptionalPropertyTypes": false,               /* Interpret optional property types as written, rather than adding 'undefined'. */
+      "noImplicitReturns": false,                        /* Enable error reporting for codepaths that do not explicitly return in a function. */
+      "noFallthroughCasesInSwitch": false,               /* Enable error reporting for fallthrough cases in switch statements. */
+      "noUncheckedIndexedAccess": false,                 /* Add 'undefined' to a type when accessed using an index. */
+      "noImplicitOverride": false,                       /* Ensure overriding members in derived classes are marked with an override modifier. */
+      "noPropertyAccessFromIndexSignature": false,       /* Enforces using indexed accessors for keys declared using an indexed type. */
+      "allowUnusedLabels": false,                        /* Disable error reporting for unused labels. */
+      "allowUnreachableCode": false,
+    },
+    "include": [
+      "main.ts",
+      "./src/**/*"
+    ],
+    "exclude": [
+      "node_modules",
+      "webpack.*.js",
+      "**/tests/*",
+      "**/*spec.ts",
+    ]
+  }

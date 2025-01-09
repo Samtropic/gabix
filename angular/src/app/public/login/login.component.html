@@ -1,0 +1,31 @@
+ <div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
+    <div class="container mx-auto">
+        <div class="max-w-md mx-auto my-10">
+            <div class="text-center">
+                <a href="/">
+                    <img src="https://docorga.com/assets/images/docorga_logo.png" alt="Docorga Logo" />
+                </a>
+            </div>
+            <div class="m-12">
+                <form action="" [formGroup]="loginForm">
+                    <div class="mb-6">
+                        <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Addresse mail</label>
+                        <input [formControlName]="'email'" type="email" name="email" id="email" placeholder="gregory-house@yopmail.com" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-teal-100 focus:border-teal-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <label for="password" class="text-sm text-gray-600 dark:text-gray-400">Mot de passe</label>
+                        </div>
+                        <input [formControlName]="'password'" type="password" name="password" id="password" placeholder="check the code..." class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-teal-100 focus:border-teal-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                    </div>
+                    <div class="mb-6">
+                        <button type="button" class="w-full px-3 py-4 text-white bg-teal-500 rounded-md focus:bg-teal-600 focus:outline-none" (click)="login()">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+            <div class="text-center">
+                <a class="font-bold underline" href="/search">Rechercher des professionels</a>
+            </div>
+        </div>
+    </div>
+</div>

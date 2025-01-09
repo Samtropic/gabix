@@ -1,0 +1,21 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/"
+  ],
+  "collectCoverageFrom": [
+    "**/*.(t|j)s"
+  ],
+  "coverageDirectory": "./coverage",  
+  "rootDir": "../",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "testRunner": "jest-jasmine2",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "testTimeout": 60000,
+  "moduleNameMapper": {
+    "^@api/(.*)": "<rootDir>/$1"
+  }
+}
