@@ -32,6 +32,7 @@ export class ProfessionalPatientsComponent implements OnInit {
       'birthdate',
       'email',
       'phone',
+      'createdAt',
     ];
   }
 

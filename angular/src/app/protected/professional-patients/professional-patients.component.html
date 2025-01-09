@@ -22,8 +22,8 @@
 
          <ng-container matColumnDef="birthdate">
             <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
-            <td mat-cell *matCellDef="let element"> {{element.birthdate | date: dateFormatService.getDateFormat() }} </td>
-          </ng-container>
+            <td mat-cell *matCellDef="let element"> {{element.birthdate | date: dateFormatService.getDatetimeFormat() }} </td>
+         </ng-container>
        
          <ng-container matColumnDef="email">
            <th mat-header-cell *matHeaderCellDef> Email </th>
@@ -33,6 +33,11 @@
          <ng-container matColumnDef="phone">
            <th mat-header-cell *matHeaderCellDef> Téléphone </th>
            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Date de création </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdAt | date: dateFormatService.getDatetimeFormat(true) }} </td>
          </ng-container>
        
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
