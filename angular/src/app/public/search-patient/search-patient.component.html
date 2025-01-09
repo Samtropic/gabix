@@ -9,18 +9,24 @@
             <div class="flex flex-col items-center space-y-4 mt-12">
                 <p class="text-gray-300 uppercase text-sm">Trouvez votre praticien.</p>
                 <form class="w-full flex items-center" [formGroup]="formGroup">
-                    <input type="email" name="email" id="email" class="h-14 w-72 p-2 mb-6 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded-tl rounded-bl text-sm" placeholder="Nom de votre praticien" autocomplete="off">
+                    <input type="text" name="professionalsInput" id="professionalsInput" [ngModel]="searchString"  [ngModelOptions]="{standalone: true}" (ngModelChange)="handleInputSearch($event)" class="h-14 w-72 p-2 mb-6 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded-tl rounded-bl text-sm" placeholder="Nom de votre praticien" autocomplete="off">
                     <ng-container *ngIf="expertizes?.length">
                         <mat-form-field>
                             <mat-label>Expertizes</mat-label>
-                            <mat-select [formControlName]="'toppings'">
-                                <mat-option *ngFor="let expertize of expertizes" value="expertize.label.unknown">{{expertize.label.unknown}}</mat-option>
+                            <mat-select [(ngModel)]="selectedExpertize" [formControlName]="'toppings'">
+                                <mat-option *ngFor="let expertize of expertizes" [value]="expertize.label.unknown">{{expertize.label.unknown}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </ng-container>
-                    <button class="h-14 mb-5 ml-10 bg-teal-600 hover:bg-teal-700 py-2 px-6 text-gray-100 border border-teal-600 rounded text-sm">Rechercher</button>
                 </form>
             </div>
+            <section class="search-results">
+                <p *ngIf="!(professionals$ | async)?.length && hasDoneSearch">Aucun professionel n'a été trouvé</p>
+                <ng-template ngFor let-pro [ngForOf]="professionals$ | async" let-i ="index">
+                    <hr *ngIf="i > 0" />
+                    <p class="result">{{pro.lastName}} {{pro.firstName}}</p>
+                </ng-template>
+            </section>
         </div>
         <div class="w-full flex items-center flex-col justify-center">
             <a class="text-white font-bold mb-8 underline" href="/login">Se connecter à mon compte professionel</a>

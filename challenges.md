@@ -107,7 +107,7 @@ I can search with and without accent, in uppercase or lowercase.
 
 Implement a beautiful interface showing the interaction and the results of the API
 
-    # Notes:
+    # Notes: Live search on professional's lastname or firstname, limited to 5 results and debounced.
 
 ## 7. Code review:
 
