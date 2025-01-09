@@ -127,8 +127,8 @@ the files to review are:
 
     ## professional.service.ts
     - Api urls are hard coded
-    - some methods are untyped, some return a subscription whereas some return observable
-    - there is no error handling
+    - Some methods are untyped, some return a subscription whereas some return observable
+    - There is no error handling
 
 ### _API_
 
@@ -136,3 +136,12 @@ the files to review are:
 `gabix/api/src/app/services/patients.service.ts`
 
     # Notes:
+    ## professional.service.ts
+    - Defer logging to a dedicated service instead of console.log
+    - Return a specific error message instead of a generic one
+    - Returned status codes aren't matching the error
+    - Declare clearer operation message for tryCatchErrorAndSubscribe collection parameter
+
+    ## patients.services.ts
+    - Same remarks as above
+    - Use aggregate to design a more efficient query for getPatientsProfessionalByPhoneIndex(), using $match regex and $group by professional
