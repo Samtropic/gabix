@@ -1,0 +1,54 @@
+<div [formGroupName]="controlKey">
+<mat-form-field>
+    <mat-label>Prénom</mat-label>
+    <input matInput formControlName="firstName" >
+    <ng-container *ngIf="formControl['firstName'].errors">
+    <div class="text-warn-500">
+            <div *ngIf="formControl['firstName'].errors['required']">le prénom est requis</div>
+            <div *ngIf="formControl['firstName'].errors['minlength']">le prénom doit faire au moins 2 caractères</div>
+            <div *ngIf="formControl['firstName'].errors['maxlength']">le prénom ne doit pas excéder 50 caractères</div>
+            <div *ngIf="formControl['firstName'].errors['pattern']">Vous ne pouvez pas utiliser de caractères spéciaux (à l'exception du tiret du 6, l'apostrophe simple et l'espace) ou de schémas exotiques</div>
+        </div>
+    </ng-container>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="lastName" >
+    <ng-container *ngIf="formControl['lastName'].errors">
+        <div class="text-warn-500">
+            <div *ngIf="formControl['lastName'].errors['required']">le nom est requis</div>
+            <div *ngIf="formControl['lastName'].errors['minlength']">le nom doit faire au moins 2 caractères</div>
+            <div *ngIf="formControl['lastName'].errors['maxlength']">le nom ne doit pas excéder 50 caractères</div>
+            <div *ngIf="formControl['lastName'].errors['pattern']">Vous ne pouvez pas utiliser de caractères spéciaux (à l'exception du tiret du 6, l'apostrophe simple et l'espace) ou de schémas exotiques</div>
+        </div>
+    </ng-container>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" >
+    <ng-container *ngIf="formControl['email'].errors">
+    <div class="text-warn-500">
+        <div *ngIf="formControl['email'].errors['required']">Un email est requis</div>
+        <div *ngIf="formControl['email'].errors['email']">Cet email n'est pas supporté</div>
+    </div>
+    </ng-container>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Téléphone</mat-label>
+    <input matInput type="tel" formControlName="phone" >
+    <ng-container *ngIf="formControl['phone'].errors">
+        <div class="text-warn-500">
+            <div *ngIf="formControl['phone'].invalid">Ce numéro de téléphone n'est pas valide</div>
+        </div>
+    </ng-container> 
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Date de naissance</mat-label>
+    <input matInput type="date" formControlName="birthdate" >
+    <ng-container *ngIf="formControl['birthdate'].errors">
+        <div class="text-warn-500">
+            <div *ngIf="formControl['birthdate'].invalid">Cette date de naissance n'est pas valide</div>
+        </div>
+    </ng-container> 
+</mat-form-field>
+</div>

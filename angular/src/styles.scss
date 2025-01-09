@@ -1,12 +1,22 @@
+@use 'styles/theme' as theme;
 /* You can add global styles to this file, and also import other style files */
+
+// TailwindCSS
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html{
-    height: 100%;
-  }
-  body {
-    min-height: 100%;
-  }
+* {
+  @apply transition-colors;
+}
+html,
+body {
+  @apply h-full;
+}
+body {
+  @apply m-0;
+  @apply font-sans;
+}
+
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+

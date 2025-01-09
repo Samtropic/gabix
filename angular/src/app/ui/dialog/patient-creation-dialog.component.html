@@ -1,0 +1,10 @@
+<h1 class="text-xl p-4 dark:text-white text-gray-900">{{inputData.title}}</h1>
+<div class="col-span-1 p-4">
+    <form [formGroup]="form" (ngSubmit)="onConfirm()">
+        <app-user-form controlKey="patientForm" label="Données du patient"></app-user-form>
+    </form>
+</div>
+<div class="flex gap-4 p-4 flex-row">
+    <button mat-raised-button (click)="onConfirm()" class="flex px-4 py-2 text-center gap-2 text-white bg-green-500 hover:bg-green-700 rounded-md"><mat-icon>save</mat-icon>Enregister</button>
+    <button (click)="closeDialog()" class="flex px-4 py-2 text-center text-white bg-red-500 hover:bg-red-700 rounded-md">Annuler</button>
+</div>

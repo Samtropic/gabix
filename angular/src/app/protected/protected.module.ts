@@ -10,7 +10,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { PatientCreationDialogComponent } from '../ui/dialog/patient-creation-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     ProtectedComponent,
@@ -26,6 +31,12 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    PatientCreationDialogComponent,
+    MatSnackBarModule,
   ],
   providers: [ProfessionalService, DatePipe],
 })

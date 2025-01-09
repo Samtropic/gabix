@@ -4,8 +4,13 @@
    </div>
 </div>
 <ng-template #contentLoaded>
-   <div class="p-4 sm:ml-64 bg-teal-50">
-      <div class="text-4xl font-semibold">Mes patients</div>
+   <div class="flex place-content-between p-4 sm:ml-64 bg-teal-50">
+      <div class="text-4xl font-semibold text-center">Mes patients</div>
+      <button mat-fab extended aria-label="ajouter un patient" (click)="openDialog()" class="flex gap-2 p-2 text-center hover:bg-gray-700 hover:text-white hover:rounded-md">
+         <mat-icon>person_add</mat-icon>
+         Ajouter un patient
+       </button>
+       
    </div>
    <div class="sm:ml-64 p-4">
       <table mat-table [dataSource]="dataSource" class="shadow-2xl">

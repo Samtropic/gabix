@@ -18,8 +18,6 @@ export interface PatientInterface {
   birthdate: Date;
   phone: string;
   professional: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export default mongoose.model<any>('Patient', PatientSchema);

@@ -42,7 +42,7 @@ Add a new button next to the patients table to add a new patient. When clicking 
 
 On success, the dialog close and the table is dynamically updated.
 
-    # Notes:
+    # Notes: Should discuss the shape of data that could be authorized, i.e phone number, first and last name case ...
 
 ### _API_
 
