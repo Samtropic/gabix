@@ -120,6 +120,15 @@ the files to review are:
 `/angular/src/app/core/services/professional.service.ts`
 
     # Notes:
+    ## my-account.ts
+    - professional$ should be of type Observable<ProfessionalDto> for type safety
+    - It's preferable that formGroup and formBuilder are typed
+    - There is no unsubscription throughout this component lifecycle using unsubscribe or takeUntil thus conducting to memory leaks
+
+    ## professional.service.ts
+    - Api urls are hard coded
+    - some methods are untyped, some return a subscription whereas some return observable
+    - there is no error handling
 
 ### _API_
 
