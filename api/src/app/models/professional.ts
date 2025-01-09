@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import crypto from "crypto";
-import { encryptPassword } from "@api/services/auth.service";
+import mongoose from 'mongoose';
+import crypto from 'crypto';
+import { encryptPassword } from '@api/services/auth.service';
 
 const ProfessionalSchema = new mongoose.Schema(
   {
-    firstName: { required: true, type: String },
-    lastName: { required: true, type: String },
+    firstName: { required: true, type: String, index: 'text' },
+    lastName: { required: true, type: String, index: 'text' },
     email: { required: true, type: String, lowercase: true },
     birthdate: { required: true, type: Date },
     services: {
@@ -19,7 +19,7 @@ const ProfessionalSchema = new mongoose.Schema(
       required: true,
     },
     salt: String,
-    mainExpertize: { type: mongoose.Schema.Types.ObjectId, ref: "Expertize" },
+    mainExpertize: { type: mongoose.Schema.Types.ObjectId, ref: 'Expertize' },
     phone: String,
     about: String,
     address: {
@@ -57,19 +57,19 @@ export interface ProfessionalInterface {
 }
 
 ProfessionalSchema.pre<any>(
-  "validate",
+  'validate',
   function (next: (error?: Error) => void) {
     // Handle new/update passwords
-    if (!this.isModified("password")) {
+    if (!this.isModified('password')) {
       return next();
     }
 
     if (!this.password || !this.password.length) {
-      return next(new Error("Invalid password"));
+      return next(new Error('Invalid password'));
     }
 
     // Refresh the salt
-    this.salt = crypto.randomBytes(16).toString("base64");
+    this.salt = crypto.randomBytes(16).toString('base64');
     // Save the encrypted version of the password
     this.password = encryptPassword(this.password, this.salt);
 
@@ -77,4 +77,9 @@ ProfessionalSchema.pre<any>(
   }
 );
 
-export default mongoose.model<any>("Professional", ProfessionalSchema);
+ProfessionalSchema.index(
+  { lastName: 'text', firstName: 'text' },
+  { name: 'lastName_firstName_text_index' }
+);
+
+export default mongoose.model<any>('Professional', ProfessionalSchema);

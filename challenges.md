@@ -101,7 +101,7 @@ I can search with and without accent, in uppercase or lowercase.
 
     # for CI => create e2e and unit tests and run them before commit your changes
 
-    # Notes:
+    # Notes: Indexes have been set for names. The professional is firstly searched by its prl.enabled status, then mainExpertize (although this may not be ideal for performance, it can help the customer with choosing the right pro in the expertize domain) and finally by names.
 
 ### \_Fullstack - Front-end oriented
 
